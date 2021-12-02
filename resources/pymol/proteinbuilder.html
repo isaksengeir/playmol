@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - Resources</title>
+		<meta name="description" content="How to make a protein animation combining pymol and python." />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+        <link href="../../_css/playmol_style.css" rel="stylesheet" />
+        <script src="../../_js/jquery-1.9.1.js" type="text/javascript"></script>
+        
+        		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+				<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="../../images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a  href="../../home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a  href="../../news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="../../forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="../../journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="../../journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="../../journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="../../journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="../../journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="../../journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="../../journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a  href="../../gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="../../gallery/images.html">Images</a></li>
+							<li><a href="../../gallery/animations.html">Animations</a></li>
+							<li><a href="../../gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)"href="../../resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a style="color:rgb(175, 225, 48)" href="../pymol.html">pyMol</a></li>
+							<li><a href="../python.html">python</a></li>
+							<li><a href="../bash.html">Bash</a></li>
+							<li><a href="../forcefield.html">Force field</a></li>
+							<li><a href="../evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;">pyMol - Protein Builder Animation</h1> 
+			
+			<section>
+				I have recieved some requests to share how I made the <a href="../../gallery/animations.html#pyMol">Protein Visualization using pyMol</a>
+				movie. 
+				So, that is just what I am going to do. The tutorial is quite general so that you can add your own style to it
+				once you get the hang of it.
+				<p>Making this kind of animation without a trajectory can in principle be devided into 3 parts:</p>
+				<ol class="general">
+					<li><a href="#representation">Choose how to represent the protein.</a></li>
+					<li><a href="#pythonscript">Write a python script to create a series of images.</a></li>
+					<li><a href="#movie">Making the animation based on the image series.</a></li>
+				</ol>
+				<p>In this tutorial I will use a small, but well known, enzyme called Lysozyme. Download lysozyme with pdb entry <i>1FSJ</i>
+					from <a href="http://www.pdb.org">The Protein Data Bank</a> and load it in pymol. Alternatively, you can download it directly from pyMol
+					with the <i>fetch</i> command. Then prepare the file so that it has no pdb header or any water molecules/ions (we do not need these).
+					Open pymol and type in the command field:
+						<ol>
+							<li><p class="data">PyMol> fetch 1FSJ</p> 
+								or if you downloaded the file: <p class="data">PyMol> load 1fsj.pdb</p></li>
+							<li><p class="data">PyMol> save lysozyme.pdb, 1fsj and not (resn HOH or resn NO3)</p></li>
+							<li><p class="data">PyMol> delete 1fsj</p></li>
+							<li><p class="data">PyMol> load lysozyme.pdb</p></li>
+						</ol>
+					Now you should have a clean pdb file without any of the crystallographic information that we do not need for this purpose.
+					<figure class="newsFigure">
+			 				<img src="proteinbuilder/_images/lysozyme.png" />
+			 				<figcaption>Lysozyme without solvent.</figcaption>
+					 	</figure>
+					 </p>
+					
+			</section>
+				
+			<section>
+				<h2 id="representation">1. Choosing how to represent the protein </h2>
+				<p>The first thing to do is deciding how to represent the protein. This will totally depend on what
+				your preferences are and what you think looks the best. A good start is therefore to play around
+				with your structure in pymol (you can get some tips from <a href="thebasics.html">pyMol - the basics</a> tutorial)
+				until you find a combination of colors etc. that you are happy with.
+				We want the Lysozyme to build up to look for example like this:
+					 	<figure class="newsFigure">
+			 				<img src="proteinbuilder/_images/play.png" />
+			 				<figcaption>How we want to represent the protein in the animation.</figcaption>
+					 	</figure>
+				Here I have represented the protein with blue helices, yellow sheets and gray fat loops with rounded edges.
+					To get this representation in pyMol, type the following in the command field:
+					<ol start="5">
+						<li><p class="data">PyMol> set cartoon_color, gray, ss l</p></li>
+						where 'ss' stands for 'secondary structure' and 'l' for loop.
+						<li><p class="data">PyMol> set cartoon_color, yellow, ss s</p></li>
+						where 's' stands for 'sheet'.
+						<li><p class="data">PyMol> set cartoon_color, skyblue, ss h</p></li>
+						where 'h' stands for 'helix'.
+						<li><p class="data">PyMol> set cartoon_loop_radius, 0.5</p></li>
+						for fatter loops.
+						<li><p class="data">PyMol> set cartoon_loop_cap, 2</p></li>
+						for rounded loop edges.<br />
+						Finally, to see the result:
+						<li><p class="data">PyMol> hide lines, all</p></li>
+						<li><p class="data">PyMol> show cartoon, all</p></li>
+					</ol>
+				Notice that we have used the 'set' command. We could have used 'color' to color the object, but then we would have
+				to specify this over and over again for every object. By using 'set' we create a default for the representation cartoon
+				which all objects will inherit.
+				</p>
+				<p>
+					Now, what we really want to do is to display one residue at the time until the entire enzyme is visible. This will
+					give the impression of a growing enzyme. Just to give you an idea on how this works, try to type the following:
+					
+					<ol start="12">
+						<li><p class="data">PyMol> hide all</p></li>
+						<li><p class="data">PyMol> show cartoon, lysozyme and i. 1-2</p></li>
+							<img src="proteinbuilder/_images/res1.png"/>
+						<li><p class="data">PyMol> show cartoon, lysozyme and i. 3</p></li>
+							<img src="proteinbuilder/_images/res3.png"/>
+						<li><p class="data">PyMol> show cartoon, lysozyme and i. 4</p></li>
+							<img src="proteinbuilder/_images/res4.png"/>
+						<br />...and so on ...
+						
+					</ol>
+					So, this would have to be repeated until the entire Lysozyme is visible, of course saving a snapshot for each round.
+					This would have been extremely boring and time consuming. Luckily, with just a bit of python coding, all of this 
+					can happen while you spend you time on something more interesting. 
+				</p>
+				
+			</section>
+			
+			<section>
+				<h2 id="pythonscript">2. Python script </h2>
+				PyMol and Python are like a hand in a glove, and you do not need to be an expert in the python language to take advantage of it 
+				together with pymol. 
+				If you know the pyMol commands for what you want to do, you are already off for a good start.
+				<p>
+					Let us start by making a script that can automatically displays the Lysozyme as above, but without typing
+					all those commands everytime you start a new pyMol session. Open a text editor like textedit, gedit or notepad for example
+					and type the following:
+					<p class="data">
+						from pymol import * <br />
+						<br />
+						cmd.set('cartoon_color','skyblue','ss h')<br />
+						cmd.set('cartoon_color','yellow','ss s')<br />
+						cmd.set('cartoon_color','gray','ss l')<br />
+						<br />
+						cmd.set('cartoon_loop_radius','0.5')<br />
+						cmd.set('cartoon_loop_cap','2')<br />
+						<br />
+						cmd.hide('lines','all')<br />
+						cmd.show('cartoon','all')<br />
+						
+					</p>
+					Save the file as 'settings.py' (or whatever you want, as long as it ends with '.py') in the directory where you launched pyMol.
+					In pyMol, type the following commands:
+					<ol start="16">
+						<li><p class="data">PyMol> reinitialize</p></li>
+						<li><p class="data">PyMol> load lysozyme.pdb</p></li>
+						<li><p class="data">PyMol> run settings.py</p></li>
+					</ol>
+					If everything went well, you will now have the same representation as we created above. Now, I guess you can see
+					how this can become handy in the long run.
+				</p>
+				<p>The next step is to write some code that can display one reisdue at the time and save a snapshot of it until
+					the entire enzyme is visible. Lysozyme consists of 130 residues, so we are going to create 130 images. All we
+					need to do here is to write a loop that cycles 130 time. The quasi code for this would look something like 
+					(this is not the actual code, just a more readable scetch):
+					<p class="data"> 
+						for residue in range 1 to 130:<br />
+						&emsp; display residue <br />
+						&emsp; save image <br />
+						</p>
+					And that is basically it. Before the loop starts we put the settings that we wrote in 'settings.py' so that the
+					enzyme is displayed the way we intended too. 
+					</p>
+				<p> Write the following script and save it as 'createImages.py':
+					<p class="data">
+						from pymol import * <br />
+						<br />
+						cmd.set('cartoon_color','skyblue','ss h')<br />
+						cmd.set('cartoon_color','yellow','ss s')<br />
+						cmd.set('cartoon_color','gray','ss l')<br />
+						<br />
+						cmd.set('cartoon_loop_radius','0.5')<br />
+						cmd.set('cartoon_loop_cap','2')<br />
+						<br />
+						cmd.hide('lines','all')<br />
+						<br />
+						img=0 <br />
+						<br />
+						def fileName(n):<br />
+        				&emsp; if n < 10:<br />
+                		&emsp; &emsp; image='000'+str(n)<br />
+        				&emsp; elif n < 100 and n > 9:<br />
+                		&emsp; &emsp; image ='00'+str(n)<br />
+        				&emsp; elif n > 99 and n < 1000:<br />
+                		&emsp; &emsp; image = '0'+str(n)<br />
+        				&emsp; elif n > 999:<br />
+                		&emsp; &emsp; image = str(n)<br />
+        				&emsp; return image<br />
+        				<br />
+        				for i in range (1,131): <br />
+        				&emsp; newRes=int(i)<br/>
+        				&emsp; img = img + 1 <br/>
+        				&emsp; image = fileName(img) <br />
+        				&emsp; cmd.show('cartoon','i. %i' %newRes) <br/>
+        				&emsp; cmd.ray('400','400') <br />
+        				&emsp; cmd.png(image) <br />
+        				&emsp; print 'Image %i written' % img
+					</p>
+					Once you get the hang of this, you can modify the script to do whatever you like. Explaining 
+					all the python syntax is not in the scope of this tutorial. If you have questions about it, please
+					use the <a href="../../forum.html">forum</a> or follow the upcoming Python tutorials.
+					</p>
+					<p>
+						In pyMol, write the following commands to run the script and generate the images:
+						<ol start="19">
+						<li><p class="data">PyMol> reinitialize</p></li>
+						<li><p class="data">PyMol> load lysozyme.pdb</p></li>
+						Orient it as you would like it to appear.
+						<li><p class="data">PyMol> run createImages.py</p></li>
+					</ol>
+					</p>
+					This will take a minute or two, depending on your machine speed. Now you have created
+					a series of images. All that is left is to combine them into movie. 
+			</section>
+			
+			<section>
+				<h2 id="movie">3. Making the animation</h2>
+				Now you have a series of images (0001.png ... 0130.png) that needs to be animated.
+				There are several tools for doing this, such as QuickTime, iMovie, adobe premiere etc.
+				Personally I prefere <a href="http://www.imagemagick.org/">ImageMagick</a> for creating gifs
+				or <a href="http://www.ffmpeg.org/">FFmpeg</a> to create mp4.
+				<p>If you decide to use ImageMagick to create a gif animation, open a terminal window and type the following code
+					in the directory where your image series is located:
+					<p class="data">convert -set delay 3 -loop 0 -scale 100% *.png Output.gif</p>
+					<div style="text-align:center">
+					<img  src="proteinbuilder/protBuild.gif" alt="Animation"/> <br />
+					</div>
+					That is it! If you have any remaining questions, please use the <a href="../../forum.html">forum</a> .
+					</p>
+				<p>Happy modeling!</p>
+			</section>
+	</div>
+
+	<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="../../home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="../../journalFeed.html">Journal Feed</a></li>	
+					<li><a href="../../forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="#">About</a></li>	
+					<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="#">PyMol</a></li>	
+					<li><a href="../python.html">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="../../images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - Resources</title>
+		<meta name="description" content="PyMol resources. Tutorials on how to use pymol efficiently. Tips and tricks. " />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+        <link href="../_css/playmol_style.css" rel="stylesheet" />
+        <script src="../_js/jquery-1.9.1.js" type="text/javascript"></script>
+        
+        		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+				<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="../images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a  href="../home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a  href="../news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="../forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="../journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="../journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="../journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="../journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="../journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="../journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="../journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a  href="../gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="../gallery/images.html">Images</a></li>
+							<li><a href="../gallery/animations.html">Animations</a></li>
+							<li><a href="../gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)"href="../resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a style="color:rgb(175, 225, 48)" href="pymol.html">pyMol</a></li>
+							<li><a href="python.html">python</a></li>
+							<li><a href="bash.html">Bash</a></li>
+							<li><a href="forcefield.html">Force field</a></li>
+							<li><a href="evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;">pyMol</h1> 
+			
+			<section>
+				Learn how to take take full advantage of pyMol and the powerfull tricks that makes visualizing molecular structures a dream.
+				Pymol is fairly well documented in the <a href="http://pymolwiki.org/index.php/Main_Page">pymol wiki page</a>, and you
+				should check out that page for a more complete documentation on pyMol.
+				Many however find that the wiki page is a bit cumbersome to use, so the goal here is simply to point out some of
+				the most usefull and nice looking techniques.   
+				
+			</section>
+		<p>Content:</p>
+	
+		<ul class="general">
+			<li><a href="pymol/thebasics.html">The basics</a></li>
+			<li><a href="pymol/glossysurface.html">Glossy surface</a></li>
+			<li><a href="pymol/proteinbuilder.html">Protein Builder Animation</a></li>
+			<li><a href="pymol/eldensity.html">Electron Density</a></li>
+		</ul>
+	</div>
+	
+		<!--PLAYMOL NEWS TEMPLATE START-->	
+	<div class="news" id="thebasics">
+		<hgroup>
+		<time>2013-03-12</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> The Basics </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img src="pymol/thebasics/_images/dots.png" alt="dots" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			A brief overview of the basic stuff in pyMol. 
+			
+			<p><a href="pymol/thebasics.html"> Read more...</a> </p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+	
+	<!--PLAYMOL NEWS TEMPLATE START-->	
+	<div class="news" id="elDensity">
+		<hgroup>
+		<time>2013-03-10</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Displaying Electron Density Maps </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img  src="pymol/eldensity/_images/elDensity.png" alt="ElDensity" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			This tutorial explains how to display the crystallographic electron
+			density maps in pyMol.
+			
+			<p><a href="pymol/eldensity.html"> Read more...</a> </p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+	
+	
+	<!--PLAYMOL NEWS TEMPLATE START-->	
+	<div class="news" id="proteinBuilder">
+		<hgroup>
+		<time>2013-03-07</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Make a Protein Build up Animation </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img src="pymol/proteinbuilder/_images/play.png" alt="dots" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			A tutorial describing how to make a animation of a protein
+			building up one residue at the time by combining pyMol and python. 
+			
+			<p><a href="pymol/proteinbuilder.html"> Read more...</a> </p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+	
+
+	
+	<!--PLAYMOL NEWS TEMPLATE START-->	
+	<div class="news" id="glossySurface">
+		<hgroup>
+		<time>2013-03-02</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Glossy surface </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img src="pymol/_images/glossy.png" alt="Glossy surface" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			Many people ask how to get the glossy surface effect with pyMol. Here is
+			a very easy step by step instruction on how to do this. 
+			
+			<p><a href="pymol/glossysurface.html"> Read more...</a> </p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+
+	
+
+	<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="../home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="../journalFeed.html">Journal Feed</a></li>	
+					<li><a href="../forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="../about.html">About</a></li>	
+					<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="http://www.pymol.org">PyMol</a></li>	
+					<li><a href="http://www.python.org">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="../images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>

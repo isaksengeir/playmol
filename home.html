@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - Home</title>
+		<meta name="description" content="PlayMol homepage. Molecular modeling, computational chemistry, emperical valence bond, forum, resources, python, bash and journal feed" />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+        <link href="_css/playmol_style.css" rel="stylesheet" />
+        <script src="_js/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="_js/zrssfeed-120/jquery.zrssfeed.min.js" type="text/javascript"></script>
+        <script src="_js/zrssfeed-120/jquery.vticker.js" type="text/javascript"></script>
+        
+        <!-- Use http://feedvalidator.org -->  
+        <script type="text/javascript">
+			$(window).load(function () {
+			$('#ticker1').rssfeed('http://www.nature.com/nchem/journal/vaop/ncurrent/rss.rdf',{
+			snippet: false,
+			content: true,
+			
+				}, function(e) {
+			$(e).find('div.rssBody').vTicker({
+			showItems: 1,
+			pause:6000,
+			speed:500,
+			animation:'fade'
+		});
+	});
+});
+			$(document).ready(function () {
+  			$('#pmForum').rssfeed("http://playmol-forum.1066339.n5.nabble.com/playMol-Forum-f1.xml", {
+    		limit: 4,snippet: false,
+    		content: false
+  				});
+			});
+		</script>
+		
+		<!-- dropdown list code:-->
+		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+		<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)" href="home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a href="news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a href="gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="gallery/images.html">Images</a></li>
+							<li><a href="gallery/animations.html">Animations</a></li>
+							<li><a href="gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a href="resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a href="resources/pymol.html">pyMol</a></li>
+							<li><a href="resources/python.html">python</a></li>
+							<li><a href="resources/bash.html">Bash</a></li>
+							<li><a href="resources/forcefield.html">Force field</a></li>
+							<li><a href="resources/evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;padding-top:5px">Modeling for the future</h1> 
+			
+			<section>
+				With the power of computational chemistry and modeling one can see and explain many phenomena beyond 
+				what is possible with modern experimental techniques. Not only can a significant amount of time and money be saved
+				with theroetical approaches, but also risks both for the scientist and the environment. 
+				There is little doubt that great parts of the future in molecular sciences lie within the endless 
+				possibilities of theoretical chemistry and modeling.
+				
+				<p><img style="
+					margin:0px auto;
+					display:block; 
+					opacity:0.8;
+					box-shadow: .0em .0em .3em white;
+					border-radius:2px; 
+					" 
+					src="images/playMolecules.png" alt="Future modeling" >
+					
+					<br /> Get an overview of the latest articles from several 
+					modeling related journals. Share your ideas and discuss related topics, tips &amp; tricks in 
+					the <a href="forum.html">forum</a> and the <a href="resources.html">resource</a> section. 
+				</p>
+			</section>
+			</div>
+			
+			
+			<div style="max-width:1500px">
+				<div class="rightBox">
+					<div id="ticker1" class="journalTicker"> </div>
+					<hr />
+					<h3><a href="journalFeed.html">More Journal News... </a></h3>
+				</div>
+				
+				
+				<div class="leftBox">
+					<time>2013-06-03</time>
+					<p> Enzyme catalysis: reorganization or preorganization? </p>
+					<aside>
+						<div class="frame">
+							<img src="news/images/EnzymeDesign_logo_small.png" alt="enzyme" />
+						</div>
+					</aside>
+					<p><a href="news/enzymeFlexibility.html">Read more.</a></p>
+				</div>
+				
+				
+				<div class="leftBox">
+					<time>2013-03-10</time>
+					<p> Display electron density maps with pyMol </p>
+					<aside>
+						<div class="frame">
+							<img src="resources/pymol/_images/elDensity.png" alt="glossy surface" />
+						</div>
+					</aside>
+					<p><a href="resources/pymol/eldensity.html">Read more.</a></p>
+				</div>
+				
+				
+				
+				<div class="leftBox">
+					
+					<div  id="pmForum" class="journalTicker"> </div>
+					<hr />
+					<h3><a href="forum.html">Go to Forum... </a></h3>
+				</div>
+				
+				<div class="rightBox">
+					
+					<p> Manipulate PDB files with Python </p>
+					<aside>
+						<div class="frame">
+							<img src="images/pdbPython.png" alt="python code" />
+						</div>
+					</aside>
+					<p><a href="resources/python.html">Read more.</a></p>
+				</div>
+			
+			</div>
+			
+			<br style="clear:both"/>
+		
+			<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="journalFeed.html">Journal Feed</a></li>	
+					<li><a href="forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="about.html">About</a></li>	
+					<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="http://www.pymol.org">PyMol</a></li>	
+					<li><a href="http://www.python.org">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>

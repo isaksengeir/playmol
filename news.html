@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - News</title>
+		<meta name="description" content="PlayMol news and other molecular related news.." />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+        <link href="_css/playmol_style.css" rel="stylesheet" />
+        <script src="_js/jquery-1.9.1.js" type="text/javascript"></script>
+        
+        		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+				<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a  href="home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)" href="news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a href="gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="gallery/images.html">Images</a></li>
+							<li><a href="gallery/animations.html">Animations</a></li>
+							<li><a href="gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a href="resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a href="resources/pymol.html">pyMol</a></li>
+							<li><a href="resources/python.html">python</a></li>
+							<li><a href="resources/bash.html">Bash</a></li>
+							<li><a href="resources/forcefield.html">Force field</a></li>
+							<li><a href="resources/evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;">Molecular news</h1> 
+			
+			<section>
+				News and updates from playMol and other molecular related sources.
+			</section>
+	</div>
+
+<!--PLAYMOL NEWS #4 TEMPLATE START-->	
+	<div class="news" id="reconstruction">
+		<hgroup>
+		<time>2013-06-03</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Enzyme catalysis: reorganization or preorganization? </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img src="news/images/EnzymeDesign_logo_small.png" alt="PLAYMOL LOGO" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			A complete understanding of how enzymes work is a hot topic within the field of
+			 computational chemistry and structural biology. One of the most controversial questions
+			  these days is the question if enzymes are completely preorganized with respect to the
+			   reaction coordinates, or if flexibility is required for reorganization to support the 
+			   catalytic mechanism. 
+			<p ><a href="news/enzymeFlexibility.html">READ MORE</a>
+			</p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+
+<!--PLAYMOL NEWS #4 TEMPLATE START-->	
+	<div class="news" id="reconstruction">
+		<hgroup>
+		<time>2013-02-20</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Site undergoing reconstruction </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<!--Small image right Side-->
+		<aside>
+			<div class="frame">
+			<img src="images/PM_logo_small.png" alt="PLAYMOL LOGO" />
+			</div>
+		</aside>
+		
+		<!--Content of news goes here-->
+		<section> 
+			The playMol website is currently being reconstructed
+			and improved for better user experience. One of the main focuses in this upgrade
+			is to make the page dynamic, so that it will display properly on any device.
+			<p >Note that many of the pages are not up yet, so please
+				show patience with links leading to blank pages and dead ends.
+			</p>
+		</section>
+		<h4 style="clear:both">&nbsp; </h4>
+	</div >	
+<!--PLAYMOL NEWS TEMPLATE END-->
+
+<!--PLAYMOL NEWS #3 TEMPLATE START-->
+	<div class="news" id="journalFeed">
+		
+		<hgroup>
+		<time>2013-01-21</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> News &amp; Updates from Related Journals  </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<aside>
+			<div class="frame">
+			<img src="images/journalNewsFeed.png" alt="RSS feed" />
+			</div>
+		</aside>
+		
+		<section> <!--Content of news goes here-->
+			Get the latest articles and updates from related journals through the incorporated
+			 <a href="journalFeed.html">RSS feed</a>.
+			<p>Currently the followin journals are included:
+				<ul>
+					<li>Nature Chemistry</li>
+					<li>Journal of Chemical Information and Modeling</li>
+					<li>Journal of Chemical Theory and Computation</li>
+					<li>Journal of Molecular Graphics and Modeling</li>
+					<li>Journal of the American Chemical Society</li>
+					<li>Journal of Theoretical and Computational Chemistry</li>
+				</ul>
+			</p>
+		</section>	
+		<h4 style="clear:both">&nbsp; </h4>
+	</div>
+<!--PLAYMOL NEWS TEMPLATE END-->
+
+<!--PLAYMOL NEWS #2 TEMPLATE START-->
+	<div class="news" id="trypsinReaction">
+		
+		<hgroup>
+		<time>2013-01-11</time> <!--publication date (YEAR-MONTH-DAY)-->
+		<h2> Simulation of the Tetrahedral Formation Step in Trypsin </h2> <!--Title of News*/-->
+		<br style="clear:both" />
+		</hgroup>
+		
+		<aside>
+			<div class="frame">
+			<img src="images/0480.png" alt="RSS feed" />
+			</div>
+		</aside>
+		
+		<section> <!--Content of news goes here-->
+			Serine proteases, and Trypsin in particular, are some of the most thoroughly
+			studied enzymes whith a lot of experimental data available. Trypsin is therefore 
+			a perfect candidate for theoretical computations. 
+			<p>In a currently ongoing project I have calculated the rate limiting step in the
+				acylation reaction, the formation of the tetrahedral intermediate, using the
+				MD/FEP/EVB technique. The activation energy (transition state, TS), &Delta; G<sup>&Dagger; </sup>,
+				obtained from the calculations are around 19.5 kcal/mol. This is in excellent agreement
+				with the substrate dependent barrier that typically is 15 - 20 kcal/mol.</p>
+			<p>The reaction profile is illustrated below where RS is the reactant state, TS the transition
+				state and TET is the tetrahedral intermediate.</p> 
+			 <figure class="newsFigure">
+			 	<img src="images/bt_reactProfile.png" />
+			 	<figcaption>Reaction profile for the thetrahedral intermediate formation step in bovine trypsin.</figcaption>
+			 </figure>
+			<p>A animation with 100 ps of the trajectory around the transition state illustrates the system
+				changing from the reactant state to the tetrahedral intermediate. Notice that water molecules
+				(~5000) have been hidden in the animation for better visibility. Only the counter ions
+				(Cl<sup>-</sup>) are visible.</p>
+			<p>View the animation <a href="gallery/animations.html">here!</a></p> 
+			<h4 style="clear:both">&nbsp; </h4>
+	</div>
+<!--PLAYMOL NEWS TEMPLATE END-->
+
+	<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="journalFeed.html">Journal Feed</a></li>	
+					<li><a href="forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="about.html">About</a></li>	
+					<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="http://www.pymol.org">PyMol</a></li>	
+					<li><a href="http://www.python.org">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - Resources</title>
+		<meta name="description" content="A list of the basics for using pymol. Everything from glossy surface to color space." />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+        <link href="../../_css/playmol_style.css" rel="stylesheet" />
+        <script src="../../_js/jquery-1.9.1.js" type="text/javascript"></script>
+        
+        		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+				<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="../../images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a  href="../../home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a  href="../../news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="../../forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="../../journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="../../journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="../../journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="../../journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="../../journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="../../journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="../../journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a  href="../../gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="../../gallery/images.html">Images</a></li>
+							<li><a href="../../gallery/animations.html">Animations</a></li>
+							<li><a href="../../gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)"href="../../resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a style="color:rgb(175, 225, 48)" href="../pymol.html">pyMol</a></li>
+							<li><a href="../python.html">python</a></li>
+							<li><a href="../bash.html">Bash</a></li>
+							<li><a href="../forcefield.html">Force field</a></li>
+							<li><a href="../evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;">pyMol - The Basics</h1> 
+			
+			<section>
+				Here is a list of some of the basic stuff in pyMol that can be useful to know.
+				<ol class="general">
+					<li><a href="#colorSpace">Color Space</a></li>
+					<li><a href="#bg_color">Background Color</a></li>
+					<li><a href="#representations">Representations</a></li>
+					<li><a href="#colors">Colors</a></li>
+					<li><a href=#selections>Selections </a></li>
+				</ol>
+			</section>
+				
+			<section>
+				<h2 id="colorSpace">1. Color Space</h2>
+				
+				<p>Actually I do not see this covered so often, but I think it is important to
+					think about what type of color space you prefer. First of all because your images
+					will look quite different dependending on what you choose, and secondly because the colors
+					can be differently converted when using softwares such as photoshop. It is further
+					nice to be aware of this to create figures that are consistent with
+					each other. </p>
+				<p>There are three options for the color space in pyMol: RGB (default), CMYK (for publications) 
+					and pymol (for video &amp; web). Personally I prefer the CMYK color space which forces PyMOL 
+					to restrict its use of the RGB color space to a subset that can be reliably converted to CMYK 
+					using common tools such as Adobe Photoshop. Here follow some examples:</p>
+					
+					<p class="data">PyMol> space rgb</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/rgb.png" />
+			 				<figcaption>RGB color space (default).</figcaption>
+					 	</figure>
+					<p class="data">PyMol> space cmyk</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/cmyk.png" />
+			 				<figcaption>CMYK color space.</figcaption>
+					 	</figure>
+					<p class="data">PyMol> space pymol</p>
+					<figure class="newsFigure">
+			 				<img src="thebasics/_images/pymol.png" />
+			 				<figcaption>Pymol color space.</figcaption>
+					 	</figure>
+					<p>As you can see, the colors that are (at least visually) the most affected by these settings 
+						are green, blue and yellow. Actually, when doing more detailed images, these effects become
+						quite visible. So if you ever find yourself in a situation wondering why you can not get the
+						same color on a figure as before, try changing the color space.
+						</p>
+			</section>
+			
+			<section>
+				<h2 id="bg_color">2. Background Color</h2>
+				<p>Changing the background color is very basic, and in many cases this is something you want to do as
+					black is not always the best choice for articles etc. To change the background color to white for example, 
+					simply type:</p>
+					<p class="data">PyMol> bg_color white</p>
+			</section>
+			
+			<section>
+				<h2 id="representations">3. Representations</h2>
+				<p>Now, representing molecular structures is what pyMol is all about. Here follows a list of
+					commands for the most basic representations with example images. There are of course more 
+					technical and interesting ways of representing molecules, and I will cover this in another
+					tutorial.</p>
+					<p>Lines
+					<p class="data">PyMol> show lines, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/lines.png" />
+			 				<figcaption>Lines.</figcaption>
+					 	</figure>
+					
+					</p>
+					
+					<p>Sticks
+					<p class="data">PyMol> show sticks, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/sticks.png" />
+			 				<figcaption>Sticks.</figcaption>
+					 	</figure>
+					
+					</p>
+					
+					<p>Ribbon
+					<p class="data">PyMol> show ribbon, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/ribbon.png" />
+			 				<figcaption>Ribbon.</figcaption>
+					 	</figure> 
+					 
+					</p>
+					
+					<p>Cartoon
+					 <p class="data">PyMol> show cartoon, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/cartoon.png" />
+			 				<figcaption>Cartoon.</figcaption>
+					 	</figure> 
+					 
+					</p>
+					
+					<p>Sausage view
+					 <p class="data">PyMol> show cartoon, all</p>
+					 <p class="data">PyMol> cartoon putty</p>
+					 <p class="data">PyMol> unset cartoon_smooth_loops</p>
+					 <p class="data">PyMol> unset cartoon_flat_sheets</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/putty.png" />
+			 				<figcaption>Sausage/putty representation</figcaption>
+					 	</figure> 
+					
+					</p>
+					
+					<p>Dots
+					<p class="data">PyMol> show dots, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/dots.png" />
+			 				<figcaption>Dots.</figcaption>
+					 	</figure>
+					
+					</p>
+					
+					<p>Wire
+					<p class="data">PyMol> show wire, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/wire.png" />
+			 				<figcaption>Wire.</figcaption>
+					 	</figure> 
+					
+					</p>
+					
+					<p>Spheres
+					 <p class="data">PyMol> show spheres, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/spheres.png" />
+			 				<figcaption>Spheres.</figcaption>
+					 	</figure> 
+					 
+					</p>
+					
+					<p>Surface
+					 <p class="data">PyMol> show surface, all</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/surface.png" />
+			 				<figcaption>Surface.</figcaption>
+					 	</figure>
+					 </p> 
+			</section>
+			
+			<section>
+				<h2 id="colors">4. Colors</h2>
+				<p>Changing the object color is easily done through the 'color' command followed by
+					the name of a color or the color code. For example, to color an object green, type:</p>
+					<p class="data">PyMol> color green, objectName</p>
+					<figure class="newsFigure">
+				
+			 				<img src="thebasics/_images/color_green.png" />
+			 				<figcaption>Object colored in green.</figcaption>
+					 	</figure>
+					<p>Maybe a bit more interesting is the possibility to color based on the secondary structure.
+						You access the secondary structure elements throught the 'ss' keyword followed by 'h', 's' or 'l+' for
+						helix, sheet and loop, respectively. </p>
+						<p class="data">PyMol> color gray, ss l+</p>
+						<p class="data">PyMol> color red, ss h</p>
+						<p class="data">PyMol> color sand, ss s</p>
+						<figure class="newsFigure">
+			 				<img src="thebasics/_images/color_SS.png" />
+			 				<figcaption>Coloring by secondary structure.</figcaption>
+					 	</figure>
+					
+			</section>
+			
+			<section >
+				<h2 id="selections">5. Selections </h2>
+				<p>Being able to select atoms, residues, chains and entire objects is by all means one of the most
+					important features of pyMol. With selctions you can for example add a unique color to each residue:
+					<p class="data">PyMol> color "color", i. "residueNumber"</p>
+					<figure class="newsFigure">
+			 				<img src="thebasics/_images/colorAll.png" />
+			 				<figcaption>Coloring each residue with different colors.</figcaption>
+					 	</figure>
+					
+					</p>
+				<p>
+					Here is a list of examples using different selectors:
+					<ul>
+						<li><p class="data">PyMol> show surface, obj01 </p></li>
+						Selects the entire structure called 'obj01' and represents the surface for it.
+						<li><p class="data">PyMol> color red, i. 21</p></li>
+						Selects residue 21 and colors it red. The command 'resi' also works.
+						<li><p class="data">PyMol> color red, resi 21-42</p></li>
+						Selects residue 21 to 42 and colors them red. 
+						<li><p class="data">PyMol> show cartoon, chain B</p></li>
+						Selects chain B in a protein (chain B must of course exist) and shows
+						cartoon representation for this selection.
+						<li><p class="data">PyMol> show spheres, id 2472 </p></li>
+						Selects atom number 2472 and displays it as a sphere.
+						<li><p class="data">PyMol>show spheres, name CA</p></li>
+						Selects all CA atoms and represents them as spheres.
+								
+					</ul>
+					<figure class="newsFigure">
+			 				<img src="thebasics/_images/ribbon_spheres.png" />
+			 				<figcaption>Object displayed with ribbon and all CA atoms displayed as spheres.</figcaption>
+					 	</figure>
+				</p> 
+				
+				<p>Using 'or' and 'and' enables you to do more flexible selctions. Here it is important to understand
+					the difference between the two. Using 'a and b' for example means that both 'a' and 'b' need
+					to be true for the selection to work. Specifying 
+					<p class="data">PyMol> show spheres, name C and name CB </p> will never work
+					because 'C' and 'CB' are different atoms, and can not be the same. However, specifying 
+					<p class="data">PyMol> show spheres, name C or name CB</p> will successfully display spheres on both 'C' and 'CB'. 
+					Another example:
+					<p class="data">PyMol> show spheres, i. 21-90 and name CA</p>
+					This will display spheres on all CA atoms for residues 21 to 90.
+					</p>
+				
+				</section>
+			
+			
+	</div>
+
+	<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="../../home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="../../journalFeed.html">Journal Feed</a></li>	
+					<li><a href="../../forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="../../about.html">About</a></li>	
+					<li><a href="../../contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="#">PyMol</a></li>	
+					<li><a href="../python.html">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="../../images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>

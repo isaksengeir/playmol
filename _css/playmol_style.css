@@ -1,0 +1,509 @@
+body {
+	background-color: black;
+    text-align:justify;
+    background-image:url("../images/under_surface.png");
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-attachment: fixed;
+    min-width:400px;
+    width:100%;	
+   }
+
+
+    
+/*MAIN BODY DEFINITION */
+
+.main{
+	margin-left:5%;
+    margin-right:5%;
+    margin-bottom:1.5%;
+    padding-left:5%;
+    padding-right:5%;
+    max-width:1200px;
+  
+    
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+    
+     	}
+.animation{
+	/*margin-left:5%;
+    margin-right:5%;
+    margin-bottom:1.5%;*/
+    margin: 0 auto 1.5% auto;
+    padding-left:5%;
+    padding-right:5%;
+    max-width:720px;
+
+
+   
+  
+    
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+    
+     	}
+     	
+/*Box classes */
+.leftBox{
+	float:left;
+	margin-left:5%;
+    margin-right:0%;
+    margin-bottom:1.5%;
+    padding-left:2.5%;
+    padding-right:2.5%;
+    padding-top:5px;
+    width:38.5%;
+    max-width:650px;
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+}
+
+.leftBox time {
+	float: right;
+	color:white;
+	clear:left;
+}
+
+
+.rightBox{
+	float:right;
+	margin-left:0%;
+    margin-right:5%;
+    margin-bottom:1.5%;
+    padding-left:2.5%;
+    padding-right:2.5%;
+    padding-top:5px;
+    width:38.5%;
+    max-width:650px;
+    height:100%;
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+}
+
+
+#iframeForum {
+	width:100%;
+	
+}
+
+/*FONT STYLES AND DEFINITIONS */        	
+header,footer,h3,h4,h5,section,p {
+	color:white;
+}
+
+header {
+	position:relative;
+	
+}
+
+
+h1 {font-family:"Copperplate Gothic Light";
+        		color: rgb(175, 225, 48);
+        		font-size: 2em;
+        		font-weight: normal;
+        		text-shadow: .2em .2em .4em black;
+        		text-shadow:.0em .0em .2em white;
+        		
+        	}
+
+h2 {
+        		color: rgb(175, 225, 48);
+        		font-size: 1.5em;
+        		font-weight: normal;
+        		text-shadow: .2em .2em .4em white;
+				text-shadow:.0em .0em .2em silver;	
+}
+
+/*FOOTER DEFINTION */
+.footer {
+	margin-left:5%;
+    margin-right:5%;
+    margin-bottom:0%;
+    padding-left:5%;
+    padding-right:5%;
+    max-width:1200px;
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+   
+}
+footer {
+	text-align:center;
+	
+	
+}
+small {
+	color:rgb(150,150,150);
+	text-align:center;
+	} 
+
+.footerLinks{
+	float:left;
+	width:25%;
+	padding-top:2%;
+}
+.footerLinks li
+{
+	clear:both;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+
+/*HORISONTAL RULER */
+hr {
+	color:rgb(200,200,200);
+	max-width:100%;
+}  
+
+/*DEFAULT LINK COLORS DEFINED HERE*/
+        	a {
+        		text-decoration: none; /* turns underlines off for all links */
+        		
+        	}
+        	a:link {
+        		color:white;
+        		text-shadow:.0em .0em .2em black;
+        		border: .1em dashed;
+        		border-color:rgba(255, 255, 255,0.6);
+        		padding:2px;
+        		
+        		
+        	}
+        	a:visited {
+        		color:white;
+        		border-color:white;
+        	}
+        	a:focus {
+        		color:rgb(175, 225, 48); /* color of link when active (as with tab)*/
+        	}
+        	a:hover {
+        		background-color:rgb(175, 225, 48);
+        		box-shadow: .0em .0em .3em white;
+        		text-shadow:.01em .01em .05em black;
+        	}
+        	a:active {
+        		background-color:yellow;
+        		color:black;
+        	}
+        	
+
+
+
+/*GENERAL DEFINITION*/  
+pre {
+	max-width:100%;
+	white-space: pre-wrap;
+	word-break: break-word;
+	}
+	      	
+img {
+	max-width: 100%;
+	margin:0px auto;
+	/*display:block;*/
+        	}
+
+section {color: rgb(255,255,255);
+        		font-size: 1em;
+        		margin-left:5%;
+        		text-shadow: .0em .0em .4em black;
+        	}
+section:first-letter {
+        		font-size: 200%;
+        		color: rgb(255, 255, 255);
+        	}
+p {color: rgb(255,255,255);
+        		font-size: 1em;
+        		text-shadow: .0em .0em .4em black;
+        	}
+
+.data {
+	color:rgb(175, 225, 48);
+	background-color:rgba(40,40,40,0.6);
+	font-family:"Lucida Console",Monaco,monospace;
+	max-width:100%;
+
+}
+.data:first-letter {
+	font-size:100%;
+	color:rgb(175,225,48);
+}
+
+p:first-letter {
+        		font-size: 150%;
+        		color: rgb(255, 255, 255);
+        	}
+ul {
+	color:white;
+}
+
+ul.general li {
+	padding:6px;
+	
+}
+ol.general li {
+	padding:6px;
+}
+
+cite {
+	color:white;
+	font-size:small;
+}
+
+aside.note  {
+	margin:1%;
+	padding-left:1em;
+	padding-right:1em;
+	width:35%;
+	float:right;
+	border:1px solid rgb(175, 225, 48);
+	text-align:left;
+	font-size:80%;
+}
+
+/*NAVIGATION BAR*/
+.navbar {
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:rgb(40,40,40);
+	text-align:center;
+	
+	z-index: 2;
+	
+	/*background-image: url(images/playMolecules.png)*/
+	
+}
+	ul#navigation {
+		margin:0;
+		padding:0;
+		list-style-type:none;
+		min-width:100px;
+		list-style: none outside none;
+		
+		display: table; 
+		overflow:hidden;
+		float:left;
+		text-align:center;
+		
+		
+		
+	}
+ 
+	ul#navigation li {
+		float:left;
+		padding:2px;
+		width:100px;
+		margin-left:auto;
+		margin-right: auto;
+		list-style: none;
+		
+	}
+	ul#navigation li a{
+	padding: 10px 5px;
+	color: rgb(250,250,250);
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	border:5px outset;
+	-webkit-border-radius:2px; /* 0-50px decides how round the corners should be */
+	border-radius:2px;
+	border-color: rgb(50,50,50);
+	background-color:rgba(80,80,80,0.9);
+
+	
+}
+
+ul#navigation li a:hover {
+	box-shadow: .0em .0em .3em white;
+	background-color:rgba(200,200,200,0.8);
+	
+}
+
+
+
+ul#navigation li a:active {
+	
+	background-color:rgb(175, 225, 48);
+    box-shadow: .0em .0em .3em yellow;
+   
+    text-shadow:.01em .01em .05em black;
+    border:1px outset;
+        	
+}
+
+
+ul#navigation li ul#rssFeed li {
+	width:220px;
+	
+}
+	ul.sub_navigation {
+		position:absolute;
+		z-index:10;
+		
+		display:none;
+		text-align:center;
+		font-size:smaller;
+		
+		
+		
+	}
+ 
+	ul.sub_navigation li {
+		
+		clear:both;
+		
+	}
+	
+}
+
+
+/*JOURNAL FEED DEFINITIONS*/
+.journalMain{
+	margin-left:5%;
+}
+
+.journalMain h3 {
+	box-shadow: .0em .0em .3em white;
+	border:3px outset;
+	border-color:black;
+	margin-top:5%;
+}
+
+.journalFeed {
+	display: block;
+	border:2px dashed black;
+	padding:2%;
+	color:white;
+	
+}
+.journalFeed h3 {
+	
+	box-shadow:none;
+}
+
+.journalTicker {
+    word-wrap: break-word;
+    -moz-hyphens:auto; 
+    -webkit-hyphens:auto; 
+    -o-hyphens:auto; 
+    
+
+}
+.journalTicker img{
+	width:90%;
+}
+
+/*NEWS DEFINITIONS*/
+.news {
+	margin-left:5%;
+    margin-right:5%;
+    margin-bottom:1.5%;
+    padding-left:5%;
+    padding-right:5%;
+    max-width:1200px;
+    background-color:rgba(40,40,40,0.7);
+    border:1px solid white;
+    box-shadow: .0em .0em .3em white;
+}
+.news h2{
+	float:left;
+}
+.news time {
+	float: right;
+	color:white;
+	clear:left;
+}
+.frame {
+	width:30%;
+	/*padding:2px;*/
+	
+	margin:5px;
+	float:right;
+}
+.frame img{
+	max-width:100%;
+	max-height:100%;
+	border:1px dashed white;
+	
+}
+
+.newsFigure {
+	max-width:70%;
+	border:1px dashed white;
+	text-align:center;
+	
+}
+.newsFigure figcaption {
+	font-size:small;
+	color:white;
+}
+.newsFigure figcaption:before {
+	content:"Figure: ";
+	font-size:small;
+	font-weight:bold;
+	color:rgb(175,225,48);
+}
+.newsFigure figcaption:first-letter {
+	font-size:150%;
+	color:rgb(175,225,48);
+}
+
+/*IMAGE GALLERY DEFINITIONS */
+
+
+
+ul.imgLinks  {
+	list-style-type:none;
+}
+
+ul.imgLinks img {
+	display:block;
+	opacity: 0.6;
+
+	
+}
+
+ul.imgLinks li a{
+	float:left;
+	border:1px dashed white;
+	padding:2px;
+	color: rgb(250,250,250);
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	border:3px outset;
+	-webkit-border-radius:2px; /* 0-50px decides how round the corners should be */
+	border-radius:2px;
+	border-color: rgba(60,60,60,0.9);
+	background-color:rgba(80,80,80,0.3);
+	
+}
+
+ul.imgLinks li a:hover {
+    box-shadow: .0em .0em .3em white;
+	background-color:rgba(200,200,200,0.5);
+	
+}
+
+ul.imgLinks li a:hover img {
+	opacity:1;
+}
+
+ul.imgLinks img.active {
+	opacity:1;
+	border:1px solid white;
+}
+
+.next {
+	opacity:0.7;
+	font-size:larger;
+	font-weight: bold;
+}
+
+

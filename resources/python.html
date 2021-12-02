@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>PLAYMOL - Resources</title>
+		<meta name="description" content="Python code snippets and examples. Read and manipulate PDB files with python." />
+		<meta name="author" content="Geir Isaksen" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+        <link href="../_css/playmol_style.css" rel="stylesheet" />
+        <script src="../_js/jquery-1.9.1.js" type="text/javascript"></script>
+        
+        		<script type="text/javascript">
+        // Wait for the page and all the DOM to be fully loaded
+	$('body').ready(function() {
+ 
+                // Add the 'hover' event listener to our drop down class
+		$('.dropdown').hover(function() {
+                        // When the event is triggered, grab the current element 'this' and
+                        // find it's children '.sub_navigation' and display/hide them
+			$(this).find('.sub_navigation').slideToggle(); 
+		});
+	});
+</script>
+          
+	</head>
+
+	<body>
+				<div id="main" class="main">
+			<header>
+				
+				<img style="margin:0px auto;display:block;width:35%" src="../images/PM_logo_small.png" alt="PLAYMOL LOGO" >
+				
+			</header>
+		<div class="navbar">
+			<nav>
+				<ul id="navigation">
+					<li class="dropdown"><a  href="../home.html">Home</a>
+						
+					</li>
+					<li class="dropdown"><a  href="../news.html">News</a>
+					</li>
+					<li class="dropdown"><a href="../forum.html">Forum</a>
+					</li>
+					<li class="dropdown"><a href="../journalFeed.html">RSS feeds</a>
+						<ul class="sub_navigation" id="rssFeed">
+							<li><a href="../journalFeed.html#nature
+								">Nature Chemistry</a></li>
+							<li><a href="../journalFeed.html#chemInf
+								">Chemical Information and Modeling</a></li>
+							<li><a href="../journalFeed.html#chemTheo
+								">Chemical Theory and Computation</a></li>
+							<li><a href="../journalFeed.html#molGraph">Molecular Graphics and Modeling</a></li>
+							<li><a href="../journalFeed.html#americanChemS">American Chemical Society</a></li>
+							<li><a href="../journalFeed.html#theoreticalChem">Theoretical and Computational Chemistry</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a  href="../gallery.html">Gallery</a>
+						<ul class="sub_navigation">
+							<li><a href="../gallery/images.html">Images</a></li>
+							<li><a href="../gallery/animations.html">Animations</a></li>
+							<li><a href="../gallery/submit.html">Submit</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a style="color:rgb(175, 225, 48)"href="../resources.html">Resources</a>
+						<ul class="sub_navigation">
+							<li><a href="pymol.html">pyMol</a></li>
+							<li><a style="color:rgb(175, 225, 48)"  href="python.html">python</a></li>
+							<li><a href="bash.html">Bash</a></li>
+							<li><a href="forcefield.html">Force field</a></li>
+							<li><a href="evb.html">EVB</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</div>
+			
+			<h5>&nbsp; </h5>
+	</div>
+	<div class="main">
+			<h1 style="clear:both;">Python</h1> 
+			
+			<section>
+			Python is my favorite programming language, mainly because of its readability, but also because the 
+			syntax allows you to express concepts in fewer lines of code than would be possible with other languages.
+			Python features a fully dynamic type system and is therefore perfect as a scripting language, but it is 
+			also used in a wide range of non-scripting contexts.
+			<p>The Python syntax is extremely well documented on other web pages and the purpose of this site
+				is not to compete with these. Here I will focus on scripts and code snippets useful within the
+				context of modeling. In most cases this page will serve as a personal reference on how to 
+				use python in different ways as I tend to forget as time goes by.   </p>	   
+			
+			<p>Content:</p>
+	
+		<ul class="general">
+			<li><a href="#pdbfiles">PDB files in general</a></li>
+			<li><a href="#atomdist">Atom distances</a></li>
+		</ul>
+				
+			</section>
+		
+	</div>
+	
+	<div class ="main">
+		<h2 id="pdbfiles">PDB files in general</h2>
+		<section>To read and manipulate PDB files with python we need to know some general rules about the format of these files.
+		Typically one is only interested in the structure itself, that is the lines with the atomic coordinates, and not 
+		the PDB header with the crystallographic information etc. These lines start with 'ATOM' or 'HETATM' (or 'TER') and follow 
+		the general format:	
+		<pre class="data">
+0000000000111111111122222222223333333333444444444455555555556666666666777777777 
+0123456789012345678901234567890123456789012345678901234567890123456789012345678 </pre>
+<pre class="data">
+ATOM    377  CA  ARG E  66      -1.910  71.379 192.241  1.00 27.20           C  
+ATOM    378  C   ARG E  66      -1.718  72.280 193.441  1.00 29.68           C  
+ATOM    379  O   ARG E  66      -1.892  73.500 193.361  1.00 33.25           O  
+ATOM    380  CB  ARG E  66      -0.948  71.737 191.087  1.00 29.81           C  
+HETATM  731  Ca2 Ca2 E 700      -1.171  70.878 189.840  1.00 22.08           Ca</pre>
+
+		Each line in this example contains 79 letters including spaces (0-78).
+		
+		<DL>
+			<DT><STRONG>Letters 0:5</STRONG></DT>
+				<DD>ATOM/HETATM/TER 
+			<DT><STRONG>Letters 6:10</STRONG></DT>
+				<dd>Atom number</dd>
+			<dt><strong>Letters 13:16</strong></dt>
+				<dd>PDB atom type</dd>
+			<dt><strong>Letters 17:19</strong></dt>
+				<dd>Residue name</dd>
+			<dt><strong>Letter 21</strong></dt>
+				<dd>Chain</dd>
+			<dt><strong>Letters 22:25</strong></dt>
+				<dd>Residue number</dd>
+			<dt><strong>Letters 30:37</strong></dt>
+				<dd>X coordinate</dd>
+			<dt><strong>Letters 38:45</strong></dt>
+				<dd>Y coordinate</dd>
+			<dt><strong>Letters 46:53</strong></dt>
+				<dd>Z coordinate</dd>
+			<dt><strong>Letters 56:59</strong></dt>
+				<dd>Occupancy</dd>
+			<dt><strong>Letters 61:65</strong></dt>
+				<dd>B factor</dd>
+			<dt><strong>Letters 77:78</strong></dt>
+				<dd>Atom</dd>	
+		</DL>
+			 
+		
+		When the format is clarified, python can easily be used to extract information and manipulate
+		the data in the PDB file as you wish.
+		
+		<h3>Using python to read PDB files</h3>
+		<p>The easiest way to work with files in genral in python, is to read them as lists. That is,
+		each line is going to be a list element with its own index. This is done by opening the file
+		and read ('r') in each line with the <i>.readlines()</i> function:
+		
+		<p class="data">
+>>> pdbfile = open('1bzx.pdb','r').readlines()
+		</p> 		
+		Now 'pdbfile' is a list, with <i>n</i> entries, where <i>n</i> is the number of lines in 1bzx.pdb.
+		You can check the length of a list by typing:
+		<p class="data">>>> len(pdbfile)</p>
+		which for the pdb file 1bzx.pdb will return 2690. However, there is 2219 atoms in the structure, so the rest
+		of the lines are from the pdb header and the atom connect part at the end of the file. To create a new list with 
+		only the structure we need to extract each line containing the atomic coordinates, that is the lines starting 
+		with 'ATOM' or 'HETATM'. First we create a empty list (I call it protein here), and then we add all lines from
+		'pdbfile' with the atomic coordinates to this file:
+		<pre class="data">
+>>> protein = []
+>>> for line in pdbfile:
+...   atomLine = line.split()[0]
+...   if 'ATOM' in atomLine or 'HETATM' in atomLine:
+...      protein.append(line)
+		</pre>
+The length of this list is 2219, which is the number of atoms present in the original '1bzx.pdb' file. 
+Now you can read and manipulate atom by atom by entering the corresponding index. For example, if you 
+type:
+<pre class="data">
+>>> protein[0]
+'ATOM      1  N   ILE E  16      -1.219  88.613 187.589  1.00 21.35           N  \n'
+</pre> 
+the first list element (the first atom with coordinates) is returned as a string. This
+is not really usefull yet. However,  if we now combine our knowledge of the PDB file format
+with some python functions, we can go further than just reading lines.
+
+One of the most usefull functions is the 'split' function. If you type:
+<pre class="data">
+>>> protein[0].split()
+['ATOM', '1', 'N', 'ILE', 'E', '16', '-1.219', '88.613', '187.589', '1.00', '21.35', 'N']
+</pre>
+a new list containing 12 elements is returned. This function has split the previous line
+on white spaces where for example elemente 7-9 are the x,y and z coordinates.
+To extract only the coordinates, you can type:
+<pre class="data">
+>>> protein[0].split()[6:9]
+['-1.219', '88.613', '187.589']
+</pre>
+However, whereas the split function is easy to use and requires less typing, it may
+in some cases not do what you want it to. This is because PDB files often has some 
+lines where not all entries are separated by spaces. Look at this example:
+<pre class="data">
+ATOM    356  CG1AVAL E  63     -10.280  70.440 188.215  0.50 29.25           C  
+</pre>
+Here the 'split()' will not separate the alternative pdb atom type CG1A from the residue name VAL. 
+It will return 'CG1AVAL'. On a general basis it is therefor safer to not use the split functions,
+but rather to specify the letter indices defined above. 
+		</p>
+<p>To extract parts of the pdb file based on letter indicies, try to type the following:
+<pre class="data">
+>>> protein[0][17:20]
+'ILE'
+</pre>
+which returns the residue name, that is ILE in this case, which is letters 17-19 (the last number in python is omitted).
+This way of extracting the data requires a bit more typing, but it will ensure that you get what you expect every time.
+</p>
+
+		</section>
+		
+	</div>
+	
+<div style="border: 1px dashed white;
+margin-left:5%;
+    margin-right:5%;
+    margin-bottom:1.5%;
+    padding-left:5%;
+    padding-right:5%;
+    max-width:1200px;">
+<br />
+<div class="leftBox">
+	<h3>PDB format white spaces</h3>
+	<p class="data">atomDef = line.split()[0] </p>
+	<p class="data"> atomnumber = int(line.split()[1]) </p>
+	<p class="data"> pdbAtom = line.split()[2]</p>
+	<p class="data"> residueName = line.split()[3]</p>
+	<p class="data"> chain = line.split()[4]</p>
+	<p class="data"> residueNumber = int(line.split()[5])</p>
+	<p class="data"> x = float(line.split()[6])</p>
+	<p class="data"> y = float(line.split()[7])</p>
+	<p class="data"> z = float(line.split()[8])</p>
+	<p class="data"> occupancy = float(line.split()[9])</p>
+	<p class="data"> bfactor = float(line.split()[10])</p>
+	<p class="data"> atom = line.split()[11]</p>
+</div>
+
+<div class="rightBox">
+	<h3>PDB format letter indices</h3>
+	<p class="data">atomDef = line[0:6] </p>
+	<p class="data"> atomnumber = int(line[6:11])</p>
+	<p class="data"> pdbAtom = line[13:17]</p>
+	<p class="data"> residueName = int(line[17:20])</p>
+	<p class="data"> chain = line[21:22]</p>
+	<p class="data"> residueNumber = int(line[22:26])</p>
+	<p class="data"> x = float(line[30:38])</p>
+	<p class="data"> y = float(line[38:46])</p>
+	<p class="data"> z = float(line[46:54])</p>
+	<p class="data"> occupancy = float(line[56:60])</p>
+	<p class="data"> bfactor = float(line[61:66])</p>
+	<p class="data"> atom = line[77:79]</p>
+</div>
+
+<br style="clear:both"/>
+</div>
+
+<div class="main">
+	<h2 id="atomdist">Atom distances</h2>
+	<section>
+	This is an example on how to use python to do simple calculations based on 
+	the coordinates in the PDB files. The goal is to create a simple function to calculate
+	the distance between any two pairs of atoms in a PDB file.
+	<p style="text-align: center"> r<sub>ij</sub> = ( (x<sub>j</sub> - x<sub>i</sub>)<sup>2</sup> + (y<sub>j</sub> - y<sub>i</sub>)<sup>2</sup> + (z<sub>j</sub> - z<sub>i</sub>)<sup>2</sup>)<sup>1/2</sup>  </p> 
+	To make it simple, I will make the function so that it takes two atom numbers, and returns the distance
+	between them.
+	
+	All we need to do is to search through the PDB file for the selected atom numbers,
+	and then get the corresponding coordinates to calculate the distance. Since the distance
+	involves using the square root function, we also need to import math (or numpy). If we
+	also want to use the code from the command line and take inputs from there, we need to
+	import sys.
+	<pre class="data">
+#!/usr/bin/env python
+
+import sys
+import math
+	</pre>
+	
+	<p>
+		To define a python function we use 'def':
+		<pre class="data">
+def distance(filename, atomnr1, atomnr2):
+		</pre>
+		The function 'distance' now expects 3 inputs, the name of the PDB file and
+		the two atom numbers. The next step is to open the PDB file and find the
+		correct coordinates for the selected atom pair.
+		<pre class="data">
+   pdbfile = open(filename,'r').readlines()
+
+   for line in pdbfile:
+      try:
+         if int(line.split()[1]) == int(atomnr1):
+            x1 = float(line.split()[6])
+            y1 = float(line.split()[7])
+            z1 = float(line.split()[8])
+         elif int(line.split()[1]) == int(atomnr2):
+            x2 = float(line.split()[6])
+            y2 = float(line.split()[7])
+            z2 = float(line.split()[8])
+      except:
+         continue
+		</pre>
+		Now that we got the coordinates, all that is left is to calculate the 
+		distance and return it to the user:
+		
+		<pre class="data">
+   distance = math.sqrt( (x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2 )
+
+   return distance
+		</pre>
+		Save the script as 'atomdist.py'. 
+	</p>
+	<p>
+		The function can now be imported in python and used directly as it is. Open
+		python type:
+		<p class ="data">>>> import atomdist</p>
+		Now atomdist contains the function 'distance', so to use it you have to call
+		it by typing:
+		<p class="data">>>> atomdist.distance('pdbfile',atomnr1,atomnr2)</p>
+	</p>
+	
+	<p>
+		Personally I find the code easier to use if I can use it directly
+		from the command line without using python interactively. Just add the
+		following code after the code definition:
+		<pre class="data">
+try:
+   pdbfile = str(sys.argv[1])
+   atomnr1 = sys.argv[2]
+   atomnr2 = sys.argv[3]
+
+   r12 = distance(pdbfile,atomnr1,atomnr2)
+
+   print str(r12)
+   
+except:
+   print 'Please input pdb file, and two atom numbers'
+		</pre>
+	From the command line you can now for example type:
+	<p class="data"> 
+		python atomdist.py 1bzx.py 230 389
+		</p>
+		which will return the distance between atom 230 and 389 in the
+		PDB file with entry code 1BZX.pdb. 
+	</p>
+	</section>
+</div>
+
+	<div class="footer">
+				<div class="footerLinks">
+					<h5>NAVIGATION</h5>
+					<ul>
+					<li><a href="#main">Top</a></li>	
+					<li><a href="../home.html">Home</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>&nbsp; </h5>
+					<ul>
+					<li><a href="../journalFeed.html">Journal Feed</a></li>	
+					<li><a href="../forum.html">Forum</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>INFO</h5>
+					<ul>
+					<li><a href="../about.html">About</a></li>	
+					<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footerLinks">
+					<h5>LINKS</h5>
+					<ul>
+					<li><a href="http://www.pymol.org">PyMol</a></li>	
+					<li><a href="http://www.python.org">Python</a></li>
+					</ul>
+				</div>
+				
+			<footer style="clear:both">
+				
+				<img src="../images/bottomLogo_small.png" alt="PlayMol logo"> <br/>
+			<small>
+				&copy; 2012 - 2013   GEIR ISAKSEN 
+			</small>
+			</footer>
+			</div>
+	</body>
+</html>
